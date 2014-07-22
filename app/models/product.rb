@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
     reviews.map(&:rating).reduce(:+)/reviews.count.to_f
   end
 
-  #validates_format_of :price, :with => /\d+\.\d{1,2}/
+  validates_format_of :price, :with => /\A\d+\.\d{1,2}\z/
   belongs_to :category
   belongs_to :user
   has_many :reviews
